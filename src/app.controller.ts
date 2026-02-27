@@ -1,7 +1,9 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 import { CreateMenuDto } from './create-menu.dto';
 import { Menu } from './menu.entity';
+import { Role } from './role.entity';
+import { RolePaginationDto } from './role-pagination.dto';
 
 @Controller()
 export class AppController {
@@ -21,5 +23,12 @@ export class AppController {
   @Get('menu/list')
   async getMenuList(): Promise<Menu[]> {
     return this.appService.getMenuList();
+  }
+
+  @Get('roles/list')
+  async getRoleList(
+    @Query() rolePaginationDto: RolePaginationDto,
+  ): Promise<{ data: Role[]; total: number }> {
+    return this.appService.getRoleList(rolePaginationDto);
   }
 }

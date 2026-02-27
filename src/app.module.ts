@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Menu } from './menu.entity';
+import { Role } from './role.entity';
 
 @Module({
   imports: [
@@ -13,10 +14,10 @@ import { Menu } from './menu.entity';
       username: 'postgres',
       password: '',
       database: 'postgres',
-      entities: [Menu],
+      entities: [Menu, Role],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Menu]),
+    TypeOrmModule.forFeature([Menu, Role]),
   ],
   controllers: [AppController],
   providers: [AppService],

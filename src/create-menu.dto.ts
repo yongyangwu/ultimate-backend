@@ -30,14 +30,46 @@ export class CreateMenuDto {
   menuNameEn: string;
 
   @IsString()
-  @IsNotEmpty()
-  routePath: string;
+  @IsOptional()
+  component?: string;
+
+  @IsString()
+  @IsOptional()
+  path?: string;
+
+  @IsString()
+  @IsOptional()
+  redirect?: string;
+
+  @IsString()
+  @IsOptional()
+  title?: string;
+
+  @IsString()
+  @IsOptional()
+  icon?: string;
 
   @IsBoolean()
-  @IsNotEmpty()
-  isHide: boolean;
+  @IsOptional()
+  isHide?: boolean;
 
   @IsBoolean()
-  @IsNotEmpty()
-  isKeepAlive: boolean;
+  @IsOptional()
+  isAffix?: boolean;
+
+  @IsBoolean()
+  @IsOptional()
+  isFull?: boolean;
+
+  @IsBoolean()
+  @IsOptional()
+  isKeepAlive?: boolean;
+
+  @IsString()
+  @IsOptional()
+  permissonCode?: string;
+
+  @IsInt()
+  @IsOptional()
+  order?: number;
 }
